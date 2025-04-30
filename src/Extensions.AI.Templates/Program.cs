@@ -9,6 +9,7 @@ using System.ClientModel;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
+builder.AddServiceDefaults();
 
 // You will need to set the endpoint and key to your own values
 // You can do this using Visual Studio's "Manage User Secrets" UI, or on the command line:
@@ -37,6 +38,7 @@ builder.Services.AddDbContext<IngestionCacheDbContext>(options =>
 
 var app = builder.Build();
 IngestionCacheDbContext.Initialize(app.Services);
+app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

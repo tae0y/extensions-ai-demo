@@ -16,4 +16,8 @@
     <PackageReference Include="System.Linq.Async" Version="6.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Aspire.ServiceDefaults\Aspire.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>
