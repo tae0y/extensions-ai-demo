@@ -8,6 +8,23 @@ dotnet restore && dotnet build
 dotnet watch run --project Aspire.AppHost/Aspire.AppHost.csproj
 ```
 
+## AppHost By Defaults (진행중)
+- VSCode에서 `Command + Shift + P`를 누르고 새 프로젝트 생성
+- 프로젝트 템플릿 중 `AI Chat Web App`을 선택하고, `Use Aspire Orchestraion` 옵션 활성화
+- 폴더구조
+```
+- OpenChat.AppHost
+- OpenChat.ServiceDefaults
+- OpenChat.Web
+```
+
+- Github Models 기준 빌드 및 실행
+```
+cd OpenChat.AppHost
+dotnet user-secrets set GitHubModels:Token YOUR-TOKEN
+dotnet run --project OpenChat.AppHost.csproj
+```
+
 ## AppHost Added Later
 ### 01. Extensions.AI.Templates 생성하기
 - 폴더구조
