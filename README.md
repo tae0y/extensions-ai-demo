@@ -90,3 +90,10 @@ dotnet watch run --project Aspire.AppHost/Aspire.AppHost.csproj
   - [Microsoft.Extensions.AI: Simplifying AI Integration for .NET Partners(링크)](https://devblogs.microsoft.com/semantic-kernel/microsoft-extensions-ai-simplifying-ai-integration-for-net-partners/)에 따르면,
   - `Microsoft.SemanticKernel.Abstractions`의 추상 계층에 기반한 라이브러리
   - 각 AI 벤더사에서 보다 유연하게 자체 구현을 제공할 수 있도록 제공됨
+
+- 템플릿 기본옵션
+  - .NET Version
+  - AI service provider
+  - Vector store
+  - Use keyless authentication for Azure services
+  - Use Aspire orchestration
