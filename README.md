@@ -4,16 +4,15 @@
 ## Getting Started
 - 이렇게 빌드합니다.
 ```
-cd src
 dotnet restore && dotnet build
 dotnet watch run --project Aspire.AppHost/Aspire.AppHost.csproj
 ```
 
-## 01. Extensions.AI.Templates 생성하기
+## AppHost Added Later
+### 01. Extensions.AI.Templates 생성하기
 - 폴더구조
 ```
-- src
-  - Extensions.AI.Templates
+- Extensions.AI.Templates
 ```
 
 - 환경설정
@@ -32,7 +31,7 @@ dotnet run --project <<your-project-directory>>/extensions-ai-demo.csproj
 ![](./docs/screenshot-extensions-ai-demo.png)
 - 내장된 PDF 기반으로 검색증강 채팅 데모
 
-## 02. Aspire AppHost로 통합하기
+### 02. Aspire AppHost로 통합하기
 - 폴더구조
 ```
 - src
