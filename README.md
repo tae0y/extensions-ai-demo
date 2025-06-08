@@ -25,6 +25,10 @@ dotnet user-secrets set GitHubModels:Token YOUR-TOKEN
 dotnet run --project OpenChat.AppHost.csproj
 ```
 
+> **Github Models 토큰 발급**  
+> - [Github|Settings](https://github.com/settings/personal-access-tokens) 메뉴에 접속해서 토큰을 만들고  
+> - Account Permissions 메뉴에서 Models Access 권한을 Read-only로 변경한다.
+
 ## AppHost Added Later
 ### 01. Extensions.AI.Templates 생성하기
 - 폴더구조
@@ -113,3 +117,30 @@ dotnet watch run --project Aspire.AppHost/Aspire.AppHost.csproj
   - Vector store
   - Use keyless authentication for Azure services
   - Use Aspire orchestration
+
+## 트러블슈팅
+### 프로젝트를 여러 번 기동할때 UniqueKey 제약조건 오류
+다음과 같은 오류메시지가 나온다.
+```shell
+2025-06-08T14:51:02 fail: Microsoft.EntityFrameworkCore.Database.Command[20102]
+2025-06-08T14:51:02       Failed executing DbCommand (1ms) [Parameters=[@p0='?' (Size = 34), @p1='?' (Size = 122), @p2='?' (Size = 28)], CommandType='Text', CommandTimeout='30']
+2025-06-08T14:51:02       INSERT INTO "Documents" ("Id", "SourceId", "Version")
+2025-06-08T14:51:02       VALUES (@p0, @p1, @p2);
+2025-06-08T14:51:02 fail: Microsoft.EntityFrameworkCore.Update[10000]
+2025-06-08T14:51:02       An exception occurred in the database while saving changes for context type 'extensions_ai_demo.Services.Ingestion.IngestionCacheDbContext'.
+2025-06-08T14:51:02       Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+2025-06-08T14:51:02        ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'UNIQUE constraint failed: Documents.Id'.
+```
+
+이미 DB에 데이터가 있는데, 앱을 기동할때 매번 새로 인서트를 시도해서 오류가 발생한다. 일단 해결방법은 다음과 같다.
+- appHostAddedLater/Extensions.AI.Templates 디렉토리에서 ingestioncache.db 파일을 삭제
+- `DB Browser for SQLite`와 같은 툴을 설치해서 내부 데이터를 삭제 `DELETE FROM documents; DELETE FROM records;`
+
+결국에는 DB 컨텍스트를 기동할 때마다 새로 만들거나, 혹은 데이터가 있으면 인서트하지 않도록 로직 변경이 필요하다.
+
+
+### 클린 빌드가 필요한 경우
+```shell
+dotnet clean
+find . -type d \( -name bin -o -name obj \) -exec rm -rf {} + # MAC기준
+```
