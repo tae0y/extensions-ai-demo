@@ -13,8 +13,7 @@ var credential = new ApiKeyCredential(config["OpenAI:Token"] ?? throw new Invali
 //     Endpoint = new Uri("https://api.openai.com/v1/models")
 // }
 var modelsClient = new OpenAIClient(credential);
-IChatClient chatClient = modelsClient.GetChatClient("gpt-4o-mini").AsIChatClient(); //preview
-IEmbeddingGenerator embeddingGenerator = modelsClient.GetEmbeddingClient("text-embedding-3-small").AsIEmbeddingGenerator(); //preview
+IChatClient chatClient = modelsClient.GetChatClient("gpt-4o-mini").AsIChatClient(); //previewall").AsIEmbeddingGenerator(); //preview
 
 // Microsoft.Extensions.AI
 var userMessage = new ChatMessage(ChatRole.User, "화성의 노을은 어떤 색일까?");
