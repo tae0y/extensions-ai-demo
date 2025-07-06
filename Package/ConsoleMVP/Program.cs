@@ -13,12 +13,14 @@ var credential = new ApiKeyCredential(config["OpenAI:Token"] ?? throw new Invali
 //     Endpoint = new Uri("https://api.openai.com/v1/models")
 // }
 var modelsClient = new OpenAIClient(credential);
-IChatClient chatClient = modelsClient.GetChatClient("gpt-4o-mini").AsIChatClient; //preview
-IEmbeddingGenerator embeddingGenerator = modelsClient.GetEmbeddingClient("text-embedding-3-small").AsIEmbeddingGenerator; //preview
+IChatClient chatClient = modelsClient.GetChatClient("gpt-4o-mini").AsIChatClient(); //preview
+IEmbeddingGenerator embeddingGenerator = modelsClient.GetEmbeddingClient("text-embedding-3-small").AsIEmbeddingGenerator(); //preview
 
 // Microsoft.Extensions.AI
-var request = new ChatMessage(ChatRole.User, "화성의 노을은 어떤 색일까?");
+var userMessage = new ChatMessage(ChatRole.User, "화성의 노을은 어떤 색일까?");
 List<ChatMessage> messages = new();
+messages.Add(userMessage);
+
 var responseText = new TextContent("");
 ChatMessage? currentResponseMessage = new ChatMessage(ChatRole.Assistant, [responseText]);
 await foreach (var update in chatClient.GetStreamingResponseAsync([.. messages]))
@@ -29,7 +31,3 @@ await foreach (var update in chatClient.GetStreamingResponseAsync([.. messages])
 }
 messages.Add(currentResponseMessage!);
 currentResponseMessage = null;
-
-// Program ends here.
-Console.WriteLine("============================================================");
-Console.WriteLine(responseText.Text);
