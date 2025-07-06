@@ -7,6 +7,20 @@
 
 
 
+
+
+
+### 관리사항
+- 버전관리: csproj 파일 기준으로 사용중인 패키지 신규 버전이 나오면 알림을 받고싶다. 자동으로 버전을 올려서 test 빌드 해보고 싶다.
+  - https://www.nuget.org/packages/Microsoft.Extensions.AI/#readme-body-tab
+  - https://dotnet.microsoft.com/ko-kr/download
+  - https://devblogs.microsoft.com/dotnet/announcing-dotnet-ai-template-preview1/
+  - https://devblogs.microsoft.com/dotnet/author/jordanmatthiesen/
+
+- 다른 프로젝트현황: 같은 주제로 도전중인 다른 프로젝트 현황을 월단위로 알림받고 싶다.
+  - https://github.com/dotnet/ai-samples
+
+
 ## Template
 > `Microsoft.Extensions.AI.Templates` 프로젝트 템플릿 데모
 
