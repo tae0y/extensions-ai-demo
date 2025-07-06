@@ -1,14 +1,23 @@
 # README
-- `Microsoft.Extensions.AI.Templates`의 데모 레포입니다.
 
-## Getting Started
+## Package itself
+> `Microsoft.Extensions.AI` 패키지 데모
+
+
+
+
+
+## Template
+> `Microsoft.Extensions.AI.Templates` 프로젝트 템플릿 데모
+
+### Getting Started
 - 이렇게 빌드합니다.
 ```
 dotnet restore && dotnet build
 dotnet watch run --project Aspire.AppHost/Aspire.AppHost.csproj
 ```
 
-## AppHost By Defaults (진행중)
+### AppHost By Defaults (진행중)
 - VSCode에서 `Command + Shift + P`를 누르고 새 프로젝트 생성
 - 프로젝트 템플릿 중 `AI Chat Web App`을 선택하고, `Use Aspire Orchestraion` 옵션 활성화
 - 폴더구조
@@ -29,8 +38,8 @@ dotnet run --project OpenChat.AppHost.csproj
 > - [Github|Settings](https://github.com/settings/personal-access-tokens) 메뉴에 접속해서 토큰을 만들고  
 > - Account Permissions 메뉴에서 Models Access 권한을 Read-only로 변경한다.
 
-## AppHost Added Later
-### 01. Extensions.AI.Templates 생성하기
+### AppHost Added Later
+#### 01. Extensions.AI.Templates 생성하기
 - 폴더구조
 ```
 - Extensions.AI.Templates
@@ -52,7 +61,7 @@ dotnet run --project <<your-project-directory>>/extensions-ai-demo.csproj
 ![](./docs/screenshot-extensions-ai-demo.png)
 - 내장된 PDF 기반으로 검색증강 채팅 데모
 
-### 02. Aspire AppHost로 통합하기
+#### 02. Aspire AppHost로 통합하기
 - 폴더구조
 ```
 - src
@@ -95,12 +104,12 @@ dotnet watch run --project Aspire.AppHost/Aspire.AppHost.csproj
   - **기본 헬스체크 엔드포인트 추가** : 대시보드에서 앱의 가용상태를 확인할 수 있음. 헬스체크 주기/방식 조정 가능함.
   - **서비스 디스커버리 기능** : 앱 이름으로 다른 서비스를 참조가능, 도커 컨테이너간 이름으로 참조하는 것과 유사함.
 
-## TO BE CONTINUED ...
+### TO BE CONTINUED ...
 - Service Defaults 세부설정
 - Github CI/CD Azure 배포 파이프라인
 - Github CI/CD 린팅 구성
 
-## REFERENCES
+### REFERENCES
 - **Extensions.AI.Templates 세부설정, 기여할 이슈찾기**
   - Microsoft.Extensions.AI.Templates : [nuget-저장소(링크)](https://www.nuget.org/packages/Microsoft.Extensions.AI.Templates), [github-저장소(링크)](https://github.com/dotnet/extensions/tree/a7f06f29f88311fae5c2dfcfab5561c428a349f2/src/ProjectTemplates/Microsoft.Extensions.AI.Templates), [관련이슈(링크)](https://github.com/dotnet/extensions/issues?q=is%3Aissue%20state%3Aopen%20label%3Aarea-ai-templates)
   - Microsoft.Extensions.AI : [nuget-저장소(링크)](https://www.nuget.org/packages/Microsoft.Extensions.AI.Abstractions/#readme-body-tab), [github-저장소(링크)](https://github.com/dotnet/extensions/tree/a7f06f29f88311fae5c2dfcfab5561c428a349f2/src/Libraries/Microsoft.Extensions.AI), [관련이슈(링크)](https://github.com/dotnet/extensions/issues?q=is%3Aissue%20state%3Aopen%20label%3Aarea-ai)
@@ -118,8 +127,8 @@ dotnet watch run --project Aspire.AppHost/Aspire.AppHost.csproj
   - Use keyless authentication for Azure services
   - Use Aspire orchestration
 
-## 트러블슈팅
-### 프로젝트를 여러 번 기동할때 UniqueKey 제약조건 오류
+### 트러블슈팅
+#### 프로젝트를 여러 번 기동할때 UniqueKey 제약조건 오류
 다음과 같은 오류메시지가 나온다.
 ```shell
 2025-06-08T14:51:02 fail: Microsoft.EntityFrameworkCore.Database.Command[20102]
@@ -139,7 +148,7 @@ dotnet watch run --project Aspire.AppHost/Aspire.AppHost.csproj
 결국에는 DB 컨텍스트를 기동할 때마다 새로 만들거나, 혹은 데이터가 있으면 인서트하지 않도록 로직 변경이 필요하다.
 
 
-### 클린 빌드가 필요한 경우
+#### 클린 빌드가 필요한 경우
 ```shell
 dotnet clean
 find . -type d \( -name bin -o -name obj \) -exec rm -rf {} + # MAC기준
