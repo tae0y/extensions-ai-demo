@@ -11,6 +11,9 @@
 
 
 ### 관리사항
+- Microsoft.Extensions.AI 패키지 새 소식이 나오면 먼저 알고싶다.
+  - https://devblogs.microsoft.com/dotnet/introducing-microsoft-extensions-ai-preview/
+
 - 버전관리: csproj 파일 기준으로 사용중인 패키지 신규 버전이 나오면 알림을 받고싶다. 자동으로 버전을 올려서 test 빌드 해보고 싶다.
   - https://www.nuget.org/packages/Microsoft.Extensions.AI/#readme-body-tab
   - https://dotnet.microsoft.com/ko-kr/download
